@@ -2,6 +2,11 @@
 <img width="1456" height="647" alt="Screenshot 2026-05-10 162341" src="https://github.com/user-attachments/assets/d20ab8b7-ce42-4a0b-b5f2-dcbc150aea7b" />
 294 RECORDS
 
+
+CODE:
+<img width="1757" height="957" alt="Screenshot 2026-05-10 163528" src="https://github.com/user-attachments/assets/09029c43-7b08-4513-84c1-690d686ef7fa" />
+
+
 REFLECTION
 
 In this Distributed Voting System activity, I worked on building a simple program that sends vote data to Supabase using Python in VS Code. The script creates random votes and sends them through an API into a database table.
