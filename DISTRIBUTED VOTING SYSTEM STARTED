@@ -1,0 +1,36 @@
+import requests
+import uuid
+import random
+import time
+
+SUPABASE_URL = "https://xanjzvrijmxaotzgmztn.supabase.co"
+SUPABASE_KEY = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Inhhbmp6dnJpam14YW90emdtenRuIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzgzMjMxNjksImV4cCI6MjA5Mzg5OTE2OX0.-UUDxxIzOYew9VborIAFrC2hXmEzxL-gDmRFW8T12Pg"
+
+HEADERS = {
+    "apikey": SUPABASE_KEY,
+    "Authorization": f"Bearer {SUPABASE_KEY}",
+    "Content-Type": "application/json",
+    "Prefer": "return=minimal"
+}
+
+EDGE_ID = "node_1"
+
+def generate_vote():
+    return {
+        "user_id": str(uuid.uuid4()),
+        "poll_id": "poll_1",
+        "choice": random.choice(["A", "B", "C"]),
+        "edge_id": EDGE_ID,
+        "timestamp": time.time()
+    }
+
+def send_vote(vote):
+    url = SUPABASE_URL + "/rest/v1/votes"
+    response = requests.post(url, json=vote, headers=HEADERS)
+    print("Status:", response.status_code)
+    print("Response:", response.text)
+
+while True:
+    vote = generate_vote()
+    send_vote(vote)
+    time.sleep(random.uniform(1, 3))
